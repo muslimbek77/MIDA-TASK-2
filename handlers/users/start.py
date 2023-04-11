@@ -16,7 +16,8 @@ async def bot_start(message: types.Message):
         db.add_user(id=message.from_user.id,
                     name=name)
     except sqlite3.IntegrityError as err:
-        await bot.send_message(chat_id=ADMINS[0], text=err)
+        pass
+        # await bot.send_message(chat_id=ADMINS[0], text=err)
 
     await message.answer(text="Привет! Я бот, который поможет тебе выбрать группу по твоим интересам",reply_markup=start_menu)
 
