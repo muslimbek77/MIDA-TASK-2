@@ -21,26 +21,26 @@ async def admin_page(message: types.Message):
 async def users_xls(message: types.Message):
     df = db.select_all_users()
 
-    # create a pandas dataframe by selecting data from a table
+    # создать кадр данных pandas, выбрав данные из таблицы
     df =db.convert_all_users()
 
-    # create a new workbook
+    # создать новую книгу
     workbook = Workbook()
 
-    # select the active worksheet
+    # выберите активный рабочий лист
     worksheet = workbook.active
 
-    # write the dataframe to the worksheet
+    # записать кадр данных на лист
     for r in dataframe_to_rows(df, index=False, header=True):
         worksheet.append(r)
 
-    # save the workbook to a bytes buffer
+    # сохранить книгу в буфер байтов
     buffer = io.BytesIO()
     workbook.save(buffer)
     buffer.seek(0)
     file = types.InputFile(buffer, filename='users.xlsx')
 
-    # send the file to the user
+    # отправить файл пользователю
     await message.answer_document(document=file)
 
   
@@ -87,4 +87,3 @@ async def sending_advert(message: types.Message, state: FSMContext):
     await message.answer(f"Объявления отправлены {count[0]} пользователям.")
         
 
-# Reklama yuborish  
