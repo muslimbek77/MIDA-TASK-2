@@ -15,3 +15,5 @@ ip=localhost
 Для запуска бота.
 
 3. python app.py
+
+например https://t.me/mida2bot
