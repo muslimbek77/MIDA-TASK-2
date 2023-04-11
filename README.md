@@ -12,4 +12,5 @@ ip=localhost
 
 Готовый!
 Для запуска бота.
+
 3. python app.py
